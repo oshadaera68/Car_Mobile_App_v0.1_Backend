@@ -1,5 +1,5 @@
 const express = require('express')
-const vehicle = require('./routes/Vehicle')
+const vehicle = require('./routes/vehicle')
 const app = express()
 const port = 4000
 
