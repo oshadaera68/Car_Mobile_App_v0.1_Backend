@@ -9,7 +9,7 @@ connection.connect(function (err) {
         console.log(err);
     } else {
         console.log("Connected Mysql");
-        var customerTable = "CREATE TABLE IF NOT EXISTS customer(id VARCHAR(255), name VARCHAR(255), address VARCHAR(255), contact VARCHAR(255))";
+        var customerTable = "CREATE TABLE IF NOT EXISTS customer(id VARCHAR(255), name VARCHAR(255), email VARCHAR(255), address VARCHAR(255), contact VARCHAR(255))";
         connection.query(customerTable, function (err, result) {
             if (result.warningCount === 0) {
                 console.log("table created");
@@ -29,12 +29,13 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     const id = req.body.id;
     const name = req.body.name;
+    const email = req.body.email;
     const address = req.body.address;
     const contact = req.body.contact;
 
-    var save = "INSERT INTO customer (id,name,address,contact) VALUES(?,?,?,?)";
+    var save = "INSERT INTO customer (id,name,email,address,contact) VALUES(?,?,?,?,?)";
 
-    connection.query(save, [id, name, address, contact], err => {
+    connection.query(save, [id, name, email, address, contact], err => {
         if (err) {
             res.send({ "message": "Customer Saved." })
         } else {
@@ -49,9 +50,9 @@ router.put('/', (req, res) => {
     const address = req.body.address;
     const contact = req.body.contact;
 
-    var update = "UPDATE customer SET name=?, address=?, contact=? WHERE id=?";
+    var update = "UPDATE customer SET name=?, email=?, address=?, contact=? WHERE id=?";
 
-    connection.query(update, [name, address, contact, id], err, rows => {
+    connection.query(update, [name, email, address, contact, id], err, rows => {
         if (err) console.log(err);
 
         if (rows.affectedRows > 0) {
