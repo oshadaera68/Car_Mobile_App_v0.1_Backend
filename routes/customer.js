@@ -9,7 +9,7 @@ connection.connect(function (err) {
         console.log(err);
     } else {
         console.log("Connected Mysql");
-        var customerTable = "CREATE TABLE IF NOT EXISTS customer(id VARCHAR(255), name VARCHAR(255), email VARCHAR(255), address VARCHAR(255), contact VARCHAR(255))";
+        var customerTable = "CREATE TABLE IF NOT EXISTS customer(id VARCHAR(255) PRIMARY KEY, name VARCHAR(255), email VARCHAR(255), address VARCHAR(255), contact VARCHAR(255))";
         connection.query(customerTable, function (err, result) {
             if (result.warningCount === 0) {
                 console.log("table created");
