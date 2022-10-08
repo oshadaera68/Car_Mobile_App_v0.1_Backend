@@ -1,8 +1,8 @@
-module.exports = {
-    database: {
-        host: 'localhost',
-        user: 'root',
-        password: 'Era123423',
-        database: 'CarAppDb'
+module.exports={
+    database:{
+        host : 'localhost',
+        user : 'root',
+        password : 'Era123423',
+        database : 'carappdb'
     }
 }
