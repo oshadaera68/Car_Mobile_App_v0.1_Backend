@@ -1,5 +1,4 @@
 const express = require('express');
-const { Connection } = require('mongoose');
 const app = express()
 const router = express.Router()
 const mysql = require('mysql')
